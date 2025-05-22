@@ -62,6 +62,15 @@ function Todo({ todo, setTodoList }) {
     setShowEdit((prev) => !prev);
   };
 
+  // 추가 변경점 : 수정 완료 기능
+  const handleEditDone = () => {
+    setTodoList((prev) =>
+      prev.map((el) =>
+        el.id === todo.id ? { ...el, content: inputValue } : el
+      )
+    );
+  };
+
   return (
     <li>
       {todo.content}
@@ -75,11 +84,7 @@ function Todo({ todo, setTodoList }) {
       <button
         onClick={() => {
           if (showEdit) {
-            setTodoList((prev) =>
-              prev.map((el) =>
-                el.id === todo.id ? { ...el, content: inputValue } : el
-              )
-            );
+            handleEditDone();
           }
           // 1-3. 변경점 : 토글 기능 (warring! input에 수정문을 넣어도 내용이 초기화됨)
           handleEditToggle();
