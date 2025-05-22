@@ -10,12 +10,12 @@ function App() {
   ]);
 
   return (
-    <>
+    <div className="app-container">
       <h1>Todo Check List App</h1>
       <TodoList todoList={todoList} setTodoList={setTodoList} />
       <hr />
       <TodoInput todoList={todoList} setTodoList={setTodoList} />
-    </>
+    </div>
   );
 }
 
@@ -63,7 +63,7 @@ function Todo({ todo, setTodoList }) {
     setShowEdit((prev) => !prev);
   };
 
-  // 추가 변경점 : 수정 완료 기능
+  // 추가 변경점 : 수정 완료 함수 생성
   const handleEditDone = () => {
     setTodoList((prev) =>
       prev.map((el) =>
@@ -72,10 +72,34 @@ function Todo({ todo, setTodoList }) {
     );
   };
 
+  // 추가 변경점 : 체크박스 상태에 따라 isDone 변경 함수 생성
+  const handleDoneChecked = () => {
+    setTodoList((prev) =>
+      prev.map((el) => (el.id === todo.id ? { ...el, isDone: !el.isDone } : el))
+    );
+  };
+
+  // 추가 변경점 : 삭제 함수 생성
+  const handleDelete = () => {
+    setTodoList((prev) => {
+      return prev.filter((el) => el.id !== todo.id);
+    });
+  };
+
   return (
     <li key={todo.id} className="listform">
-      <input className="checkbox" type="checkbox" />
-      <span className="text">{todo.content}</span>
+      {/* 2. 변경점 : 체크박스 추가 */}
+      <input
+        className="checkbox"
+        type="checkbox"
+        checked={todo.isDone}
+        onChange={() => {
+          handleDoneChecked();
+        }}
+      />
+      <span className={`text ${todo.isDone ? 'checked' : ''}`}>
+        {todo.content}
+      </span>
       {/* 1-2. 변경점 : 초기에 input 안보이게 */}
       {/* 1-5. 변경점 : props 추가에 맞게 여기도 props 전달 추가 */}
       {showEdit && (
@@ -94,10 +118,10 @@ function Todo({ todo, setTodoList }) {
           {showEdit ? '수정완료' : '수정'}
         </button>
         <button
+          className={todo.isDone ? 'delete-button active' : 'delete-button'}
           onClick={() => {
-            setTodoList((prev) => {
-              return prev.filter((el) => el.id !== todo.id);
-            });
+            // 추가 변경점 : 삭제 함수화
+            handleDelete();
           }}
         >
           삭제

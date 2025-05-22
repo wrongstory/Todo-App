@@ -1,21 +1,33 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center; /* 가로 중앙 */
+  align-items: center; /* 세로 중앙 */
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.app-container {
+  width: 100%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+ul {
+  padding-left: 0;
+  list-style: none;
 }
 
 .listform {
@@ -23,52 +35,88 @@
   align-items: center;
   gap: 20px;
   justify-content: flex-start;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
+
 .text {
-  flex: 1; /* 나머지 공간 채우고 버튼을 오른쪽으로 밀기 */
+  flex: 1;
+  font-size: 16px;
+  color: #333;
 }
+
+.text.checked {
+  text-decoration: line-through;
+  color: #999;
+}
+
 .button-group {
   display: flex;
-  gap: 6px;
-  justify-content: flex-end; /* 버튼들을 오른쪽 정렬 */
+  gap: 8px;
+  justify-content: flex-end;
 }
+
+button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
 .input-area {
   display: flex;
   align-items: center;
-  gap: 10px; /* ⬅️ input과 button 사이 간격 */
-  margin-bottom: 16px; /* ⬅️ 아래 요소와도 여유 공간 */
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .input-area input {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .input-area button {
-  padding: 8px 16px;
-  font-size: 16px;
+  background-color: #4a90e2;
+  color: white;
+}
+
+.input-area button:hover {
+  background-color: #357ac9;
+}
+
+.delete-button {
+  background-color: #eee;
+  color: #444;
+}
+
+.delete-button.active {
+  background-color: crimson;
+  color: white;
+}
+
+button:nth-child(1) {
+  background-color: #5cb85c;
+  color: white;
+}
+
+button:nth-child(1):hover {
+  background-color: #4cae4c;
+}
+
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-}
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
