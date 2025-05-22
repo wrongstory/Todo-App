@@ -18,6 +18,21 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.listform {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start;
+}
+.text {
+  flex: 1; /* 나머지 공간 채우고 버튼을 오른쪽으로 밀기 */
+}
+.button-group {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end; /* 버튼들을 오른쪽 정렬 */
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

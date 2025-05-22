@@ -72,35 +72,36 @@ function Todo({ todo, setTodoList }) {
   };
 
   return (
-    <li>
-      {todo.content}
-
+    <li key={todo.id} className="listform">
+      <input className="checkbox" type="checkbox" />
+      <span className="text">{todo.content}</span>
       {/* 1-2. 변경점 : 초기에 input 안보이게 */}
       {/* 1-5. 변경점 : props 추가에 맞게 여기도 props 전달 추가 */}
       {showEdit && (
         <InputToDo inputValue={inputValue} setInputValue={setInputValue} />
       )}
-
-      <button
-        onClick={() => {
-          if (showEdit) {
-            handleEditDone();
-          }
-          // 1-3. 변경점 : 토글 기능 (warring! input에 수정문을 넣어도 내용이 초기화됨)
-          handleEditToggle();
-        }}
-      >
-        {showEdit ? '수정완료' : '수정'}
-      </button>
-      <button
-        onClick={() => {
-          setTodoList((prev) => {
-            return prev.filter((el) => el.id !== todo.id);
-          });
-        }}
-      >
-        삭제
-      </button>
+      <div className="button-group">
+        <button
+          onClick={() => {
+            if (showEdit) {
+              handleEditDone();
+            }
+            // 1-3. 변경점 : 토글 기능 (warring! input에 수정문을 넣어도 내용이 초기화됨)
+            handleEditToggle();
+          }}
+        >
+          {showEdit ? '수정완료' : '수정'}
+        </button>
+        <button
+          onClick={() => {
+            setTodoList((prev) => {
+              return prev.filter((el) => el.id !== todo.id);
+            });
+          }}
+        >
+          삭제
+        </button>
+      </div>
     </li>
   );
 }
