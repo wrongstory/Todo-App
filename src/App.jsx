@@ -2,10 +2,11 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
+  // 2-1. 변경점 : 할 일 완료 체크를 위해 기본 상태에 isDone 추가
   const [todoList, setTodoList] = useState([
-    { id: 0, content: '123' },
-    { id: 1, content: '코딩 공부하기' },
-    { id: 2, content: '잠 자기' },
+    { id: 0, content: '123', isDone: false },
+    { id: 1, content: '코딩 공부하기', isDone: false },
+    { id: 2, content: '잠 자기', isDone: false },
   ]);
 
   return (
