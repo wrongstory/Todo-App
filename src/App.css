@@ -32,7 +32,24 @@
   gap: 6px;
   justify-content: flex-end; /* 버튼들을 오른쪽 정렬 */
 }
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* ⬅️ input과 button 사이 간격 */
+  margin-bottom: 16px; /* ⬅️ 아래 요소와도 여유 공간 */
+}
 
+.input-area input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.input-area button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

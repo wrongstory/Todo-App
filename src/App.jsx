@@ -11,6 +11,7 @@ function App() {
 
   return (
     <>
+      <h1>Todo Check List App</h1>
       <TodoList todoList={todoList} setTodoList={setTodoList} />
       <hr />
       <TodoInput todoList={todoList} setTodoList={setTodoList} />
@@ -22,7 +23,7 @@ function TodoInput({ todoList, setTodoList }) {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <>
+    <div className="input-area">
       <input
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
@@ -37,7 +38,7 @@ function TodoInput({ todoList, setTodoList }) {
       >
         추가하기
       </button>
-    </>
+    </div>
   );
 }
 
